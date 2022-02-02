@@ -8,5 +8,6 @@ output/*
 *.sublime-workspace
 *.pdb
 *.obj
+*.lib
 
 imgui.ini
