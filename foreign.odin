@@ -1,4 +1,4 @@
-package imgui;
+package cimgui;
 
 when ODIN_DEBUG {
 	foreign import cimgui "external/cimgui_debug.lib";

@@ -1,4 +1,4 @@
-package imgui;
+package cimgui;
 
 ImID :: distinct u32;
 

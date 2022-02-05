@@ -1,4 +1,4 @@
-package imgui;
+package cimgui;
 
 color_hsv     :: #force_inline proc(pOut: ^Color, h: f32, s: f32, v: f32, a := f32(1.0)) do ImColor_HSV(pOut, h, s, v, a);
 color_set_hsv :: #force_inline proc(self: ^Color, h: f32, s: f32, v: f32, a := f32(1.0)) do ImColor_SetHSV(self, h, s, v, a);

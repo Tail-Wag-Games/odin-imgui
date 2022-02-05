@@ -1,4 +1,4 @@
-package imgui;
+package cimgui;
 
 import "core:fmt";
 import "core:strings";

@@ -1,4 +1,4 @@
-package imgui;
+package cimgui;
 
 Draw_Flags :: enum i32 {
 	None                    = 0,
