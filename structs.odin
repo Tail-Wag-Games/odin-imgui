@@ -1,5 +1,7 @@
 package cimgui;
 
+import "core:math/linalg"
+
 //ImColor 
 Color :: struct {
 	value: Vec4,
@@ -36,9 +38,9 @@ Draw_Data :: struct {
 	total_idx_count:   i32,
 	total_vtx_count:   i32,
 	cmd_lists:         ^^Draw_List,
-	display_pos:       Vec2,
-	display_size:      Vec2,
-	framebuffer_scale: Vec2,
+	display_pos:       linalg.Vector2f32,
+	display_size:      linalg.Vector2f32,
+	framebuffer_scale: linalg.Vector2f32,
 }
 
 //ImDrawList 
@@ -54,7 +56,7 @@ Draw_List :: struct {
 	_idx_write_ptr:    ^Draw_Idx,
 	_clip_rect_stack:  Im_Vector(Vec4),
 	_texture_id_stack: Im_Vector(Texture_ID),
-	_path:             Im_Vector(Vec2),
+	_path:             Im_Vector(linalg.Vector2f32),
 	_cmd_header:       Draw_Cmd_Header,
 	_splitter:         Draw_List_Splitter,
 	_fringe_scale:     f32,
@@ -69,8 +71,8 @@ Draw_List_Splitter :: struct {
 
 //ImDrawVert 
 Draw_Vert :: struct {
-	pos: Vec2,
-	uv:  Vec2,
+	pos: linalg.Vector2f32,
+	uv:  linalg.Vector2f32,
 	col: u32,
 }
 
@@ -107,8 +109,8 @@ Font_Atlas :: struct {
 	tex_pixels_rgba32:     ^u32,
 	tex_width:             i32,
 	tex_height:            i32,
-	tex_uv_scale:          Vec2,
-	tex_uv_white_pixel:    Vec2,
+	tex_uv_scale:          linalg.Vector2f32,
+	tex_uv_white_pixel:    linalg.Vector2f32,
 	fonts:                 Im_Vector(^ImFont),
 	custom_rects:          Im_Vector(Font_Atlas_Custom_Rect),
 	config_data:           Im_Vector(Font_Config),
@@ -127,7 +129,7 @@ Font_Atlas_Custom_Rect :: struct {
 	y:               u16,
 	glyph_id:        u32,
 	glyph_advance_x: f32,
-	glyph_offset:    Vec2,
+	glyph_offset:    linalg.Vector2f32,
 	font:            ^ImFont,
 }
 
@@ -141,8 +143,8 @@ Font_Config :: struct {
 	oversample_h:             i32,
 	oversample_v:             i32,
 	pixel_snap_h:             bool,
-	glyph_extra_spacing:      Vec2,
-	glyph_offset:             Vec2,
+	glyph_extra_spacing:      linalg.Vector2f32,
+	glyph_offset:             linalg.Vector2f32,
 	glyph_ranges:             ^Wchar,
 	glyph_min_advance_x:      f32,
 	glyph_max_advance_x:      f32,
@@ -179,7 +181,7 @@ Font_Glyph_Ranges_Builder :: struct {
 IO :: struct {
 	config_flags:                            Config_Flags,
 	backend_flags:                           Backend_Flags,
-	display_size:                            Vec2,
+	display_size:                            linalg.Vector2f32,
 	delta_time:                              f32,
 	ini_saving_rate:                         f32,
 	ini_filename:                            cstring,
@@ -195,7 +197,7 @@ IO :: struct {
 	font_global_scale:                       f32,
 	font_allow_user_scaling:                 bool,
 	font_default:                            ^ImFont,
-	display_framebuffer_scale:               Vec2,
+	display_framebuffer_scale:               linalg.Vector2f32,
 	mouse_draw_cursor:                       bool,
 	config_mac_osx_behaviors:                bool,
 	config_input_text_cursor_blink:          bool,
@@ -213,7 +215,7 @@ IO :: struct {
 	clipboard_user_data:                     rawptr,
 	ime_set_input_screen_pos_fn:             proc "c"(x, y : i32),
 	ime_window_handle:                       rawptr,
-	mouse_pos:                               Vec2,
+	mouse_pos:                               linalg.Vector2f32,
 	mouse_down:                              [5]bool,
 	mouse_wheel:                             f32,
 	mouse_wheel_h:                           f32,
@@ -236,10 +238,10 @@ IO :: struct {
 	metrics_render_windows:                  i32,
 	metrics_active_windows:                  i32,
 	metrics_active_allocations:              i32,
-	mouse_delta:                             Vec2,
+	mouse_delta:                             linalg.Vector2f32,
 	key_mods:                                Key_Mod_Flags,
-	mouse_pos_prev:                          Vec2,
-	mouse_clicked_pos:                       [5]Vec2,
+	mouse_pos_prev:                          linalg.Vector2f32,
+	mouse_clicked_pos:                       [5]linalg.Vector2f32,
 	mouse_clicked_time:                      [5]f64,
 	mouse_clicked:                           [5]bool,
 	mouse_double_clicked:                    [5]bool,
@@ -248,7 +250,7 @@ IO :: struct {
 	mouse_down_was_double_click:             [5]bool,
 	mouse_down_duration:                     [5]f32,
 	mouse_down_duration_prev:                [5]f32,
-	mouse_drag_max_distance_abs:             [5]Vec2,
+	mouse_drag_max_distance_abs:             [5]linalg.Vector2f32,
 	mouse_drag_max_distance_sqr:             [5]f32,
 	keys_down_duration:                      [512]f32,
 	keys_down_duration_prev:                 [512]f32,
@@ -306,9 +308,9 @@ Payload :: struct {
 //ImGuiSizeCallbackData 
 Size_Callback_Data :: struct {
 	user_data:    rawptr,
-	pos:          Vec2,
-	current_size: Vec2,
-	desired_size: Vec2,
+	pos:          linalg.Vector2f32,
+	current_size: linalg.Vector2f32,
+	desired_size: linalg.Vector2f32,
 }
 
 //ImGuiStorage 
@@ -328,23 +330,23 @@ Storage_Pair :: struct {
 //ImGuiStyle 
 Style :: struct {
 	alpha:                          f32,
-	window_padding:                 Vec2,
+	window_padding:                 linalg.Vector2f32,
 	window_rounding:                f32,
 	window_border_size:             f32,
-	window_min_size:                Vec2,
-	window_title_align:             Vec2,
+	window_min_size:                linalg.Vector2f32,
+	window_title_align:             linalg.Vector2f32,
 	window_menu_button_position:    Dir,
 	child_rounding:                 f32,
 	child_border_size:              f32,
 	popup_rounding:                 f32,
 	popup_border_size:              f32,
-	frame_padding:                  Vec2,
+	frame_padding:                  linalg.Vector2f32,
 	frame_rounding:                 f32,
 	frame_border_size:              f32,
-	item_spacing:                   Vec2,
-	item_inner_spacing:             Vec2,
-	cell_padding:                   Vec2,
-	touch_extra_padding:            Vec2,
+	item_spacing:                   linalg.Vector2f32,
+	item_inner_spacing:             linalg.Vector2f32,
+	cell_padding:                   linalg.Vector2f32,
+	touch_extra_padding:            linalg.Vector2f32,
 	indent_spacing:                 f32,
 	columns_min_spacing:            f32,
 	scrollbar_size:                 f32,
@@ -356,10 +358,10 @@ Style :: struct {
 	tab_border_size:                f32,
 	tab_min_width_for_close_button: f32,
 	color_button_position:          Dir,
-	button_text_align:              Vec2,
-	selectable_text_align:          Vec2,
-	display_window_padding:         Vec2,
-	display_safe_area_padding:      Vec2,
+	button_text_align:              linalg.Vector2f32,
+	selectable_text_align:          linalg.Vector2f32,
+	display_window_padding:         linalg.Vector2f32,
+	display_safe_area_padding:      linalg.Vector2f32,
 	mouse_cursor_scale:             f32,
 	anti_aliased_lines:             bool,
 	anti_aliased_lines_use_tex:     bool,
@@ -405,16 +407,10 @@ Text_Range :: struct {
 //ImGuiViewport 
 Viewport :: struct {
 	flags:     Viewport_Flags,
-	pos:       Vec2,
-	size:      Vec2,
-	work_pos:  Vec2,
-	work_size: Vec2,
-}
-
-//ImVec2 
-Vec2 :: struct {
-	x: f32,
-	y: f32,
+	pos:       linalg.Vector2f32,
+	size:      linalg.Vector2f32,
+	work_pos:  linalg.Vector2f32,
+	work_size: linalg.Vector2f32,
 }
 
 //ImVec4 

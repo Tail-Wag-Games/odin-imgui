@@ -2,19 +2,20 @@ package cimgui;
 
 import "core:fmt";
 import "core:strings";
+import "core:math/linalg";
 import "core:mem";
 
 
 
-// AUTO_GENERATED for 'ImDrawList_AddText_Vec2'
-swr_ImDrawList_AddText_Vec2 :: proc(self: ^Draw_List, pos: Vec2, col: u32, text_begin: string, text_end: string) {
+// AUTO_GENERATED for 'ImDrawList_AddText_linalg.Vector2f32'
+swr_ImDrawList_AddText_Vec2 :: proc(self: ^Draw_List, pos: linalg.Vector2f32, col: u32, text_begin: string, text_end: string) {
 	str3 := strings.clone_to_cstring(text_begin, context.temp_allocator);
 	str4 := strings.clone_to_cstring(text_end, context.temp_allocator);
 	ImDrawList_AddText_Vec2(self, pos, col, str3, str4);
 }
 
 // AUTO_GENERATED for 'ImDrawList_AddText_FontPtr'
-swr_ImDrawList_AddText_FontPtr :: proc(self: ^Draw_List, font: ^ImFont, font_size: f32, pos: Vec2, col: u32, text_begin: string, text_end: string, wrap_width: f32, cpu_fine_clip_rect: ^Vec4) {
+swr_ImDrawList_AddText_FontPtr :: proc(self: ^Draw_List, font: ^ImFont, font_size: f32, pos: linalg.Vector2f32, col: u32, text_begin: string, text_end: string, wrap_width: f32, cpu_fine_clip_rect: ^Vec4) {
 	str5 := strings.clone_to_cstring(text_begin, context.temp_allocator);
 	str6 := strings.clone_to_cstring(text_end, context.temp_allocator);
 	ImDrawList_AddText_FontPtr(self, font, font_size, pos, col, str5, str6, wrap_width, cpu_fine_clip_rect);
@@ -44,7 +45,7 @@ swr_ImFontGlyphRangesBuilder_AddText :: proc(self: ^Font_Glyph_Ranges_Builder, t
 
 
 // AUTO_GENERATED for 'ImFont_CalcTextSizeA'
-swr_ImFont_CalcTextSizeA :: proc(pOut: ^Vec2, self: ^ImFont, size: f32, max_width: f32, wrap_width: f32, text_begin: string, text_end: string, remaining: ^cstring) {
+swr_ImFont_CalcTextSizeA :: proc(pOut: ^linalg.Vector2f32, self: ^ImFont, size: f32, max_width: f32, wrap_width: f32, text_begin: string, text_end: string, remaining: ^cstring) {
 	str5 := strings.clone_to_cstring(text_begin, context.temp_allocator);
 	str6 := strings.clone_to_cstring(text_end, context.temp_allocator);
 	ImFont_CalcTextSizeA(pOut, self, size, max_width, wrap_width, str5, str6, remaining);
@@ -58,7 +59,7 @@ swr_ImFont_CalcWordWrapPositionA :: proc(self: ^ImFont, scale: f32, text: string
 }
 
 // AUTO_GENERATED for 'ImFont_RenderText'
-swr_ImFont_RenderText :: proc(self: ^ImFont, draw_list: ^Draw_List, size: f32, pos: Vec2, col: u32, clip_rect: Vec4, text_begin: string, text_end: string, wrap_width: f32, cpu_fine_clip: bool) {
+swr_ImFont_RenderText :: proc(self: ^ImFont, draw_list: ^Draw_List, size: f32, pos: linalg.Vector2f32, col: u32, clip_rect: Vec4, text_begin: string, text_end: string, wrap_width: f32, cpu_fine_clip: bool) {
 	str6 := strings.clone_to_cstring(text_begin, context.temp_allocator);
 	str7 := strings.clone_to_cstring(text_end, context.temp_allocator);
 	ImFont_RenderText(self, draw_list, size, pos, col, clip_rect, str6, str7, wrap_width, cpu_fine_clip);
@@ -139,7 +140,7 @@ swr_igBegin :: proc(name: string, p_open: ^bool, flags: Window_Flags) -> bool {
 }
 
 // AUTO_GENERATED for 'igBeginChild_Str'
-swr_igBeginChild_Str :: proc(str_id: string, size: Vec2, border: bool, flags: Window_Flags) -> bool {
+swr_igBeginChild_Str :: proc(str_id: string, size: linalg.Vector2f32, border: bool, flags: Window_Flags) -> bool {
 	str0 := strings.clone_to_cstring(str_id, context.temp_allocator);
 	return igBeginChild_Str(str0, size, border, flags);
 }
@@ -152,7 +153,7 @@ swr_igBeginCombo :: proc(label: string, preview_value: string, flags: Combo_Flag
 }
 
 // AUTO_GENERATED for 'igBeginListBox'
-swr_igBeginListBox :: proc(label: string, size: Vec2) -> bool {
+swr_igBeginListBox :: proc(label: string, size: linalg.Vector2f32) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	return igBeginListBox(str0, size);
 }
@@ -206,7 +207,7 @@ swr_igBeginTabItem :: proc(label: string, p_open: ^bool, flags: Tab_Item_Flags) 
 }
 
 // AUTO_GENERATED for 'igBeginTable'
-swr_igBeginTable :: proc(str_id: string, column: i32, flags: Table_Flags, outer_size: Vec2, inner_width: f32) -> bool {
+swr_igBeginTable :: proc(str_id: string, column: i32, flags: Table_Flags, outer_size: linalg.Vector2f32, inner_width: f32) -> bool {
 	str0 := strings.clone_to_cstring(str_id, context.temp_allocator);
 	return igBeginTable(str0, column, flags, outer_size, inner_width);
 }
@@ -218,13 +219,13 @@ swr_igBulletText :: proc(fmt_: string, args: ..any) {
 }
 
 // AUTO_GENERATED for 'igButton'
-swr_igButton :: proc(label: string, size: Vec2) -> bool {
+swr_igButton :: proc(label: string, size: linalg.Vector2f32) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	return igButton(str0, size);
 }
 
 // AUTO_GENERATED for 'igCalcTextSize'
-swr_igCalcTextSize :: proc(pOut: ^Vec2, text: string, text_end: string, hide_text_after_double_hash: bool, wrap_width: f32) {
+swr_igCalcTextSize :: proc(pOut: ^linalg.Vector2f32, text: string, text_end: string, hide_text_after_double_hash: bool, wrap_width: f32) {
 	str1 := strings.clone_to_cstring(text, context.temp_allocator);
 	str2 := strings.clone_to_cstring(text_end, context.temp_allocator);
 	igCalcTextSize(pOut, str1, str2, hide_text_after_double_hash, wrap_width);
@@ -261,7 +262,7 @@ swr_igCollapsingHeader_BoolPtr :: proc(label: string, p_visible: ^bool, flags: T
 }
 
 // AUTO_GENERATED for 'igColorButton'
-swr_igColorButton :: proc(desc_id: string, col: Vec4, flags: Color_Edit_Flags, size: Vec2) -> bool {
+swr_igColorButton :: proc(desc_id: string, col: Vec4, flags: Color_Edit_Flags, size: linalg.Vector2f32) -> bool {
 	str0 := strings.clone_to_cstring(desc_id, context.temp_allocator);
 	return igColorButton(str0, col, flags, size);
 }
@@ -427,15 +428,15 @@ swr_igGetID_StrStr :: proc(str_id_begin: string, str_id_end: string) -> ImID {
 }
 
 // PREDEFINED FOR 'igGetWindowPos'
-wrapper_get_window_pos :: proc() -> Vec2 {
-    res := Vec2{};
+wrapper_get_window_pos :: proc() -> linalg.Vector2f32 {
+    res := linalg.Vector2f32{};
     igGetWindowPos(&res);
     return res;
 }
 
 // PREDEFINED FOR 'igGetWindowSize'
-wrapper_get_window_size :: proc() -> Vec2 {
-    res := Vec2{};
+wrapper_get_window_size :: proc() -> linalg.Vector2f32 {
+    res := linalg.Vector2f32{};
     igGetWindowSize(&res);
     return res;
 }
@@ -520,7 +521,7 @@ wrapper_input_text :: #force_inline proc(label: string, buf: []u8, flags := Inpu
 }
 
 // AUTO_GENERATED for 'igInputTextMultiline'
-swr_igInputTextMultiline :: proc(label: string, buf: string, buf_size: uint, size: Vec2, flags: Input_Text_Flags, callback: Input_Text_Callback, user_data: rawptr) -> bool {
+swr_igInputTextMultiline :: proc(label: string, buf: string, buf_size: uint, size: linalg.Vector2f32, flags: Input_Text_Flags, callback: Input_Text_Callback, user_data: rawptr) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	str1 := strings.clone_to_cstring(buf, context.temp_allocator);
 	return igInputTextMultiline(str0, str1, buf_size, size, flags, callback, user_data);
@@ -535,7 +536,7 @@ swr_igInputTextWithHint :: proc(label: string, hint: string, buf: string, buf_si
 }
 
 // AUTO_GENERATED for 'igInvisibleButton'
-swr_igInvisibleButton :: proc(str_id: string, size: Vec2, flags: Button_Flags) -> bool {
+swr_igInvisibleButton :: proc(str_id: string, size: linalg.Vector2f32, flags: Button_Flags) -> bool {
 	str0 := strings.clone_to_cstring(str_id, context.temp_allocator);
 	return igInvisibleButton(str0, size, flags);
 }
@@ -617,7 +618,7 @@ swr_igOpenPopupOnItemClick :: proc(str_id: string, popup_flags: Popup_Flags) {
 }
 
 // AUTO_GENERATED for 'igPlotHistogram_FloatPtr'
-swr_igPlotHistogram_FloatPtr :: proc(label: string, values: ^f32, values_count: i32, values_offset: i32, overlay_text: string, scale_min: f32, scale_max: f32, graph_size: Vec2, stride: i32) {
+swr_igPlotHistogram_FloatPtr :: proc(label: string, values: ^f32, values_count: i32, values_offset: i32, overlay_text: string, scale_min: f32, scale_max: f32, graph_size: linalg.Vector2f32, stride: i32) {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	str4 := strings.clone_to_cstring(overlay_text, context.temp_allocator);
 	igPlotHistogram_FloatPtr(str0, values, values_count, values_offset, str4, scale_min, scale_max, graph_size, stride);
@@ -632,14 +633,14 @@ wrapper_plot_histogram_fn_float_ptr :: proc(label: string,
                                       overlay_text: string,
                                       scale_min: f32,
                                       scale_max: f32,
-                                      graph_size: Vec2) {
+                                      graph_size: linalg.Vector2f32) {
     l := strings.clone_to_cstring(label, context.temp_allocator);
     overlay := strings.clone_to_cstring(overlay_text, context.temp_allocator);
     igPlotHistogram_FnFloatPtr(l, values_getter, data, values_count, values_offset, overlay, scale_min, scale_max, graph_size);
 }
 
 // AUTO_GENERATED for 'igPlotLines_FloatPtr'
-swr_igPlotLines_FloatPtr :: proc(label: string, values: ^f32, values_count: i32, values_offset: i32, overlay_text: string, scale_min: f32, scale_max: f32, graph_size: Vec2, stride: i32) {
+swr_igPlotLines_FloatPtr :: proc(label: string, values: ^f32, values_count: i32, values_offset: i32, overlay_text: string, scale_min: f32, scale_max: f32, graph_size: linalg.Vector2f32, stride: i32) {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	str4 := strings.clone_to_cstring(overlay_text, context.temp_allocator);
 	igPlotLines_FloatPtr(str0, values, values_count, values_offset, str4, scale_min, scale_max, graph_size, stride);
@@ -654,14 +655,14 @@ wrapper_plot_lines_fn_float_ptr :: proc(label: string,
                                   overlay_text: string, 
                                   scale_min: f32, 
                                   scale_max: f32, 
-                                  graph_size: Vec2) {
+                                  graph_size: linalg.Vector2f32) {
     l := strings.clone_to_cstring(label, context.temp_allocator);
     overlay := strings.clone_to_cstring(overlay_text, context.temp_allocator);
     igPlotLines_FnFloatPtr(l, values_getter, data, values_count, values_offset, overlay, scale_min, scale_max, graph_size);
 }
 
 // AUTO_GENERATED for 'igProgressBar'
-swr_igProgressBar :: proc(fraction: f32, size_arg: Vec2, overlay: string) {
+swr_igProgressBar :: proc(fraction: f32, size_arg: linalg.Vector2f32, overlay: string) {
 	str2 := strings.clone_to_cstring(overlay, context.temp_allocator);
 	igProgressBar(fraction, size_arg, str2);
 }
@@ -698,13 +699,13 @@ swr_igSaveIniSettingsToDisk :: proc(ini_filename: string) {
 }
 
 // AUTO_GENERATED for 'igSelectable_Bool'
-swr_igSelectable_Bool :: proc(label: string, selected: bool, flags: Selectable_Flags, size: Vec2) -> bool {
+swr_igSelectable_Bool :: proc(label: string, selected: bool, flags: Selectable_Flags, size: linalg.Vector2f32) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	return igSelectable_Bool(str0, selected, flags, size);
 }
 
 // AUTO_GENERATED for 'igSelectable_BoolPtr'
-swr_igSelectable_BoolPtr :: proc(label: string, p_selected: ^bool, flags: Selectable_Flags, size: Vec2) -> bool {
+swr_igSelectable_BoolPtr :: proc(label: string, p_selected: ^bool, flags: Selectable_Flags, size: linalg.Vector2f32) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	return igSelectable_BoolPtr(str0, p_selected, flags, size);
 }
@@ -751,13 +752,13 @@ swr_igSetWindowFocus_Str :: proc(name: string) {
 }
 
 // AUTO_GENERATED for 'igSetWindowPos_Str'
-swr_igSetWindowPos_Str :: proc(name: string, pos: Vec2, cond: Cond) {
+swr_igSetWindowPos_Str :: proc(name: string, pos: linalg.Vector2f32, cond: Cond) {
 	str0 := strings.clone_to_cstring(name, context.temp_allocator);
 	igSetWindowPos_Str(str0, pos, cond);
 }
 
 // AUTO_GENERATED for 'igSetWindowSize_Str'
-swr_igSetWindowSize_Str :: proc(name: string, size: Vec2, cond: Cond) {
+swr_igSetWindowSize_Str :: proc(name: string, size: linalg.Vector2f32, cond: Cond) {
 	str0 := strings.clone_to_cstring(name, context.temp_allocator);
 	igSetWindowSize_Str(str0, size, cond);
 }
@@ -956,21 +957,21 @@ swr_igTreePush_Str :: proc(str_id: string) {
 }
 
 // AUTO_GENERATED for 'igVSliderFloat'
-swr_igVSliderFloat :: proc(label: string, size: Vec2, v: ^f32, v_min: f32, v_max: f32, format: string, flags: Slider_Flags) -> bool {
+swr_igVSliderFloat :: proc(label: string, size: linalg.Vector2f32, v: ^f32, v_min: f32, v_max: f32, format: string, flags: Slider_Flags) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	str5 := strings.clone_to_cstring(format, context.temp_allocator);
 	return igVSliderFloat(str0, size, v, v_min, v_max, str5, flags);
 }
 
 // AUTO_GENERATED for 'igVSliderInt'
-swr_igVSliderInt :: proc(label: string, size: Vec2, v: ^i32, v_min: i32, v_max: i32, format: string, flags: Slider_Flags) -> bool {
+swr_igVSliderInt :: proc(label: string, size: linalg.Vector2f32, v: ^i32, v_min: i32, v_max: i32, format: string, flags: Slider_Flags) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	str5 := strings.clone_to_cstring(format, context.temp_allocator);
 	return igVSliderInt(str0, size, v, v_min, v_max, str5, flags);
 }
 
 // AUTO_GENERATED for 'igVSliderScalar'
-swr_igVSliderScalar :: proc(label: string, size: Vec2, data_type: Data_Type, p_data: rawptr, p_min: rawptr, p_max: rawptr, format: string, flags: Slider_Flags) -> bool {
+swr_igVSliderScalar :: proc(label: string, size: linalg.Vector2f32, data_type: Data_Type, p_data: rawptr, p_min: rawptr, p_max: rawptr, format: string, flags: Slider_Flags) -> bool {
 	str0 := strings.clone_to_cstring(label, context.temp_allocator);
 	str6 := strings.clone_to_cstring(format, context.temp_allocator);
 	return igVSliderScalar(str0, size, data_type, p_data, p_min, p_max, str6, flags);
