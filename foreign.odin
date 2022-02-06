@@ -1,9 +1,9 @@
 package cimgui;
 
 when ODIN_DEBUG {
-	foreign import cimgui "external/cimgui_debug.lib";
+	foreign import cimgui "cimguid.lib";
 } else {
-	foreign import cimgui "external/cimgui.lib";
+	foreign import cimgui "cimgui.lib";
 }
 
 @(default_calling_convention="c")
