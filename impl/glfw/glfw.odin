@@ -57,7 +57,7 @@ setup_state :: proc(window: glfw.Window_Handle, install_callbacks: bool) {
     io.set_clipboard_text_fn = set_clipboard_text;
     io.clipboard_user_data = state.window;
 
-    when ODIN_OS == "windows" {
+    when ODIN_OS == .Windows {
         io.ime_window_handle = rawptr(glfw.get_win32_window(state.window));
     }
 
@@ -182,7 +182,7 @@ key_callback :: proc "c" (window: glfw.Window_Handle, key, scancode, action, mod
     io.key_shift = io.keys_down[glfw.KEY_LEFT_SHIFT] || io.keys_down[glfw.KEY_RIGHT_SHIFT];
     io.key_alt   = io.keys_down[glfw.KEY_LEFT_ALT] || io.keys_down[glfw.KEY_RIGHT_ALT];
 
-    when ODIN_OS == "windows" {
+    when ODIN_OS == .Windows {
         io.key_super = false;
     } else {
         io.key_super = io.keys_down[glfw.KEY_LEFT_SUPER] || io.keys_down[glfw.KEY_RIGHT_SUPER];
